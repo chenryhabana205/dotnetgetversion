@@ -23,7 +23,7 @@ try {
   const versionFileContent = fs.readFileSync(versionFile, {
       encoding: "utf-8",
     }),
-    parsedVersion = this.versionRegex.exec(versionFileContent);
+    parsedVersion = versionRegex.exec(versionFileContent);
 
   if (!parsedVersion) {
     core.setFailed("unable to extract version info!");
