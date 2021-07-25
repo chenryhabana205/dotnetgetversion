@@ -1,0 +1,24 @@
+name: Get Version
+author: chenryhabana205
+description: Build, Pack & Publish a NuGet package with dotnet core on project version change
+
+inputs:
+    VERSION_FILE_PATH:
+        description: Filepath with version info, relative to root of repository
+        required: true
+    VERSION_REGEX:
+        description: Regex pattern to extract version info in a capturing group
+        required: false
+        default: ^\s*<Version>(.*)<\/Version>\s*$
+
+outputs:
+    TAG:
+        description: Version of the associated git tag
+
+runs:
+    using: node12
+    main: index.js
+
+branding:
+    icon: package
+    color: blue
