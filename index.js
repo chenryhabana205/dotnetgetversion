@@ -4,7 +4,6 @@ const os = require("os"),
   https = require("https"),
   spawnSync = require("child_process").spawnSync;
 const core = require("@actions/core");
-const github = require("@actions/github");
 
 try {
   const versionFile = core.getInput("VERSION_FILE_PATH");
@@ -13,8 +12,10 @@ try {
     "m"
   );
 
-  if (!fs.existsSync(versionFile))
-    this._printErrorAndExit("version file not found");
+  if (!fs.existsSync(versionFile)) {
+    core.setFailed("version file not found");
+    return;
+  }
 
   console.log(`Version Filepath: ${versionFile}`);
   console.log(`Version Regex: ${versionRegex}`);
@@ -24,8 +25,10 @@ try {
     }),
     parsedVersion = this.versionRegex.exec(versionFileContent);
 
-  if (!parsedVersion)
-    this._printErrorAndExit("unable to extract version info!");
+  if (!parsedVersion) {
+    core.setFailed("unable to extract version info!");
+    return;
+  }
 
   core.setOutput("TAG", parsedVersion[1]);
 } catch (error) {
