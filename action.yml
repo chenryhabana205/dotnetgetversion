@@ -1,4 +1,4 @@
-name: Get Version
+name: Get Version from csproj
 author: chenryhabana205
 description: Build, Pack & Publish a NuGet package with dotnet core on project version change
 
