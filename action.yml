@@ -16,7 +16,7 @@ outputs:
         description: Version of the associated git tag
 
 runs:
-    using: node12
+    using: node16
     main: index.js
 
 branding:
