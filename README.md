@@ -25,7 +25,7 @@ jobs:
       # Publish
       - name: publish on version change
         id: publish_nuget
-        uses: chenryhabana205/dotnetgetversion@v1
+        uses: chenryhabana205/dotnetgetversion@v6
         with:
           # Filepath of the project to be packaged, relative to root of repository
           VERSION_FILE_PATH: Core/Core.csproj
